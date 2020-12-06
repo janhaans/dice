@@ -1,0 +1,9 @@
+version: '3'
+services:
+  dice:
+    build: .
+    ports:
+      - "4000:5000"
+  test:
+    build: .
+    command: ["python", "-m", "pytest", "-v", "tests/dice_test.py"]
