@@ -1,0 +1,12 @@
+language: python
+
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t janhaans/dice .
+
+script:
+  - docker run janhaans/dice python -m pytest -v tests/dice_test.py
