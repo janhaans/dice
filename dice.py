@@ -6,6 +6,7 @@ app = Flask(__name__)
 def dice_page():
     return render_template('dice_page.html')
 
+#Testing the web application
 @app.route('/test')
 def test():
     return 'Works!'
