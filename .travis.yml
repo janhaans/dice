@@ -1,12 +1,15 @@
 language: generic
 
-sudo: required
-
 services:
   - docker
 
 before_install:
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker build -t janhaans/dice .
 
 script:
   - docker run janhaans/dice python -m pytest -v tests/dice_test.py
+
+deploy:
+  provider: script
+  script: docker push janhaans/dice
